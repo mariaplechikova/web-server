@@ -1,0 +1,52 @@
+html
+<!DOCTYPE html>
+<html>
+  <head>
+		<title>Parcel Sandbox</title>
+		<script src="https://smtpjs.com/v3/smtp.js"></script>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app">
+			<div>Отправитель</div>
+			<input type="email" class="email-publisher"></input>
+			<div>текст письма</div>
+      <textarea class="email-text"></textarea>
+      <div>
+        <button class="email-send">Отправить письмо</button>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+js
+import "./styles.css";
+
+const input = document.querySelector(".email-publisher");
+const textarrea = document.querySelector(".email-text");
+const button = document.querySelector(".email-send");
+
+button.addEventListener("click", async () => {
+  const from = input.value;
+  const text = textarrea.value;
+
+  const url = "http://localhost:8080/send-order";
+  console.log("from", from);
+  console.log("text", text);
+
+  const res = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({
+      from,
+      text
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+});
+
+
