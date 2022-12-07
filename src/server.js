@@ -36,10 +36,18 @@ server.get('/ping', (req, res) => {
 })
 
 // Создадим обработчик POST метода по пути /send-email
-server.post('/send-order', async (req, res) => {
-    console.log(req.body)
-    await telegram.sendToPrivateChat(`
-    <b>Email: ${req.body.from}</b>\nMessage: ${req.body.text}`)
+server.post('/book-tour', async (req, res) => {
+    const msg = `
+<b>Имя</b>: ${req.body.name}
+<b>Колличество человек:</b> ${req.body.quantity}
+<b>Контактный телефон:</b> ${req.body.phone}
+<b>Даты тура:</b> ${req.body.date}
+<b>Тариф:</b> ${req.body.tariff}
+<b>Комментарий:</b> ${req.body.comment}
+    `
+
+    await telegram.sendToPrivateChat(msg)
+
     res.send()
 })
 

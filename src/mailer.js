@@ -16,10 +16,15 @@ const transporter = nodemailer.createTransport({
 export  default {
     sendToMail(text){
         const mailOption = {
-            from: 'hosea87@ethereal.email',
-            to: 'hosea87@ethereal.email',
-            subject: 'Subject',
-            text: text
+            // from: 'hosea87@ethereal.email',
+            // to: 'hosea87@ethereal.email',
+            // subject: 'Subject',
+            // name: text
+            // quantity: text
+            // quantity: text
+            // tariff: text
+            // date: text
+            // comment: text
         }
     
         return transporter.sendMail(mailOption)
